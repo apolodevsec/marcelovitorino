@@ -1,0 +1,29 @@
+/* Números de autoridade em colunas separadas por filetes. */
+.nums .grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--pad-rule);
+}
+.num { padding: 34px 24px 6px 0; border-right: 1px solid var(--pad-rule); min-width: 0; }
+.num + .num { padding-left: 24px; }
+.num:last-child { border-right: 0; }
+.num .v {
+  font: 700 clamp(2.8rem, 5.2vw, 4.2rem)/1 var(--display);
+  font-stretch: 100%;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -.02em;
+  color: var(--pad-ink);
+}
+.num .v em { font-style: normal; color: var(--hl); }
+.num p { margin-top: 12px; color: var(--pad-ink-2); max-width: 22ch; }
+
+@media (max-width: 800px) {
+  .nums .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .num {
+    padding-left: 0 !important;
+    padding-right: 16px;
+    border-right: 0;
+    border-bottom: 1px solid var(--pad-rule);
+    padding-bottom: 24px;
+  }
+}

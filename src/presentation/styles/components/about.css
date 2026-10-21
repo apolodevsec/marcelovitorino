@@ -1,0 +1,84 @@
+/* Quem sou: texto corrido à esquerda, linha do tempo à direita. */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
+.about .prose { display: flex; flex-direction: column; gap: 18px; font-size: 1.08rem; max-width: 60ch; }
+.about .prose strong { font-weight: 700; }
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+/* Dois traços sobrepostos: o cinza é o trilho, o azul é desenhado ao rolar. */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--rule);
+}
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--hl-2);
+  transform-origin: top;
+}
+@supports (animation-timeline: view()) {
+  .timeline::after {
+    animation: drawY linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 60%;
+  }
+  @keyframes drawY { from { transform: scaleY(0); } }
+}
+.timeline li { position: relative; }
+/* Os traços acima são pseudo-elementos do .timeline, então pintam depois dos
+   filhos. Sem o z-index, o traço azul atravessaria o meio de cada bolinha. */
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 5px;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--casing);
+  border: 3px solid var(--hl-2);
+}
+.timeline .when {
+  font: 600 .78rem/1 var(--display);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--hl-2);
+}
+.timeline h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-stretch: 100%;
+  line-height: 1.25;
+  margin-top: 6px;
+}
+.timeline p { color: var(--ink-2); margin-top: 4px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 4px 0 0; }
+.chips li {
+  font: 500 .78rem/1 var(--body);
+  padding: 8px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  color: var(--ink-2);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.chips li:hover { background: var(--ink); color: var(--casing); border-color: var(--ink); }
+
+@media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 48px; } }

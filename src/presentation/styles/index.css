@@ -1,0 +1,24 @@
+/* Folha única carregada pelo layout raiz.
+   A ordem importa: variáveis, depois base, depois os componentes — que podem
+   sobrescrever as primitivas — e por último o movimento, que precisa vencer
+   todas as animações declaradas acima quando o usuário pede menos movimento. */
+@import './tokens.css';
+@import './base.css';
+@import './typography.css';
+
+@import './components/button.css';
+@import './components/section.css';
+@import './components/header.css';
+@import './components/hero.css';
+@import './components/marquee.css';
+@import './components/statistics.css';
+@import './components/about.css';
+@import './components/card.css';
+@import './components/campaigns.css';
+@import './components/cases.css';
+@import './components/press.css';
+@import './components/articles.css';
+@import './components/contact.css';
+@import './components/footer.css';
+
+@import './motion.css';

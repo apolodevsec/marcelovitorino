@@ -1,0 +1,69 @@
+/* Card escuro com holofote que segue o cursor. As coordenadas chegam por
+   --x/--y, atualizadas em JS; sem elas o gradiente fica centralizado. */
+.cards { display: grid; gap: 14px; }
+.cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--pad);
+  border: 1px solid var(--pad-rule);
+  color: var(--pad-ink);
+  text-decoration: none;
+  transition: transform .3s var(--ease), border-color .3s;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+  background: radial-gradient(380px circle at var(--x, 50%) var(--y, 0%), color-mix(in srgb, var(--hl) 22%, transparent), transparent 60%);
+}
+.card:hover { transform: translateY(-4px); border-color: var(--hl); box-shadow: 0 22px 40px -26px rgba(3, 24, 44, .7); }
+.card:hover::before { opacity: 1; }
+
+.card .tag {
+  font: 600 .7rem/1 var(--display);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--hl);
+}
+.card h3 { font-size: 1.45rem; font-weight: 700; font-stretch: 100%; line-height: 1.18; letter-spacing: -.015em; }
+.card p { color: var(--pad-ink-2); }
+.card .go {
+  margin-top: auto;
+  padding-top: 10px;
+  font: 600 .82rem/1 var(--body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pad-ink);
+}
+.card .go::after { content: "\2192"; transition: transform .2s var(--ease); }
+a.card:hover .go::after { transform: translateX(5px); }
+
+/* Numeração vazada no canto superior direito. */
+.card .glyph {
+  font: 700 4rem/.8 var(--display);
+  font-stretch: 100%;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--pad-ink) 25%, transparent);
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  transition: color .3s;
+}
+.card:hover .glyph { color: color-mix(in srgb, var(--hl) 30%, transparent); }
+
+/* Sobre faixa escura o card precisa de um tom acima do fundo. */
+.dark .card { background: var(--pad-2); }
+
+@media (max-width: 900px) { .cards.three { grid-template-columns: 1fr; } }

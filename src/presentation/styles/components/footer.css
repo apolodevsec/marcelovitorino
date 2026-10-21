@@ -1,0 +1,32 @@
+/* Rodapé: coluna de identidade mais três colunas de links. */
+.site-footer { background: var(--pad); color: var(--pad-ink-2); border-top: 1px solid var(--pad-rule); }
+.site-footer .cols {
+  display: grid;
+  grid-template-columns: 1.3fr repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  padding-block: 56px 32px;
+}
+.site-footer h3 {
+  font: 700 .92rem/1 var(--display);
+  font-stretch: 100%;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--pad-ink);
+  margin-bottom: 14px;
+}
+.site-footer .role { max-width: 30ch; }
+.site-footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 9px; }
+.site-footer a { color: var(--pad-ink-2); text-decoration: none; font-size: .92rem; }
+.site-footer a:hover { color: var(--pad-ink); }
+.site-footer .bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding-block: 18px 26px;
+  border-top: 1px solid var(--pad-rule);
+  font-size: .85rem;
+}
+
+@media (max-width: 860px) { .site-footer .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .site-footer .cols { grid-template-columns: 1fr; } }

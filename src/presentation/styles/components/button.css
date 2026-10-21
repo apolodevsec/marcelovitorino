@@ -1,0 +1,39 @@
+/* Botões: `btn-go` é a ação principal (sólida), `btn-line` é a secundária (contorno). */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 22px;
+  border-radius: 7px;
+  font: 700 .98rem/1 var(--display);
+  font-stretch: 100%;
+  letter-spacing: -.005em;
+  text-decoration: none;
+  transition: transform .15s var(--ease), box-shadow .15s var(--ease), background .2s;
+}
+
+.btn-go { background: var(--cta); color: var(--cta-ink); box-shadow: 0 4px 0 var(--cta-edge); }
+.btn-go:hover { background: var(--cta-hi); transform: translateY(1px); box-shadow: 0 3px 0 var(--cta-edge); }
+.btn-go:active { transform: translateY(4px); box-shadow: none; }
+.btn-go .arrow { transition: transform .2s var(--ease); }
+.btn-go:hover .arrow { transform: translateX(4px); }
+
+.btn-line { color: inherit; border: 1.5px solid currentColor; }
+.btn-line:hover { background: var(--cta); border-color: var(--cta); color: var(--cta-ink); }
+.block:not(.dark) .btn-line:hover { background: var(--ink); border-color: var(--ink); color: var(--casing); }
+
+/* Anel pulsante que chama atenção para o CTA da abertura. */
+.pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 10px;
+  border: 2px solid var(--cta);
+  opacity: 0;
+  animation: ring 2.6s var(--ease) infinite;
+}
+@keyframes ring {
+  0% { opacity: .7; transform: scale(.96); }
+  70%, 100% { opacity: 0; transform: scale(1.12); }
+}

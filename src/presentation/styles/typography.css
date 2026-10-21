@@ -1,0 +1,29 @@
+/* Rótulos, títulos e textos de apoio reaproveitados em várias seções.
+
+   Tudo é sans-serif. A caixa alta ficou restrita aos rótulos pequenos e ao
+   logotipo, onde é sinalização; nos títulos ela só atrapalhava a leitura. */
+.eyebrow {
+  font: 600 .74rem/1.2 var(--display);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--hl-2); }
+.dark .eyebrow { color: var(--pad-ink-2); }
+.dark .eyebrow::before { background: var(--hl); }
+
+.title {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  font-weight: 700;
+  font-stretch: 100%;
+  line-height: 1.06;
+  letter-spacing: -.02em;
+}
+/* Palavra em contorno vazado dentro do título. */
+.title .out { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
+.dark .title .out { -webkit-text-stroke-color: var(--pad-ink); }
+
+.lead { font-size: 1.12rem; color: var(--ink-2); max-width: 56ch; }

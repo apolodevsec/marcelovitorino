@@ -1,0 +1,44 @@
+/* Reset mínimo e primitivas de texto usadas por toda a página. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--casing);
+  color: var(--ink);
+  font: 400 1rem/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Faixa que cobre a área segura no topo em telas com notch. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  background: var(--pad);
+}
+
+img { max-width: 100%; height: auto; }
+[hidden] { display: none !important; }
+a { color: var(--link); text-underline-offset: 3px; }
+button { font: inherit; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+
+:focus-visible { outline: 3px solid var(--cta); outline-offset: 3px; border-radius: 4px; }
+
+/* Container central de todas as seções. */
+.wrap {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+/* Faixa escura: inverte as cores de tudo que estiver dentro. */
+.dark { background: var(--pad); color: var(--pad-ink); }
+.dark .lead { color: var(--pad-ink-2); }
+.dark a:not(.btn):not(.card):not(.k) { color: var(--hl); }

@@ -1,0 +1,57 @@
+/* Paleta e escalas do design system.
+   Azul-marinho #03182C nas faixas, gelo #F5F8FA nas seções claras, texto e
+   botões brancos sobre o azul e um azul-aço para destaques — claro sobre o
+   marinho, profundo sobre o gelo. */
+:root {
+  --casing: #F5F8FA;
+  --casing-2: #E7EDF2;
+  --ink: #03182C;
+  --ink-2: #4A5D70;
+  --rule: #D3DDE6;
+  --link: #2F5F8C;
+  --hl: #8DB4D9;
+  --hl-2: #2F5F8C;
+  --pad: #03182C;
+  --pad-2: #0B2641;
+  --pad-ink: #FFFFFF;
+  --pad-ink-2: #A9BACB;
+  --pad-rule: #1C3954;
+  --cta: #FFFFFF;
+  --cta-hi: #DDE7F0;
+  --cta-ink: #03182C;
+  --cta-edge: #7F95AB;
+  --display: var(--font-display), "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: var(--font-body), "Segoe UI", system-ui, -apple-system, sans-serif;
+  --ease: cubic-bezier(.2, .8, .2, 1);
+}
+
+/* O tema escuro redefine as mesmas variáveis; nenhum componente precisa saber. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --casing: #061F37;
+    --casing-2: #0A2844;
+    --ink: #FFFFFF;
+    --ink-2: #A9BACB;
+    --rule: #1E3C59;
+    --link: #9CC3E6;
+    --hl-2: #8DB4D9;
+    --pad: #021222;
+    --pad-2: #0B2641;
+    --pad-rule: #1A3651;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --casing: #061F37;
+  --casing-2: #0A2844;
+  --ink: #FFFFFF;
+  --ink-2: #A9BACB;
+  --rule: #1E3C59;
+  --link: #9CC3E6;
+  --hl-2: #8DB4D9;
+  --pad: #021222;
+  --pad-2: #0B2641;
+  --pad-rule: #1A3651;
+  color-scheme: dark;
+}

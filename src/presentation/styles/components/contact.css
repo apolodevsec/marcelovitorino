@@ -1,0 +1,124 @@
+/* Seção de contato: convite e canais diretos à esquerda, formulário à direita. */
+.contact .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: start;
+}
+.contact .title { color: var(--pad-ink); margin-top: 14px; }
+.contact .lead { margin-top: 18px; }
+
+.form {
+  background: var(--pad-2);
+  border: 1px solid var(--pad-rule);
+  border-radius: 14px;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.form label, .form .field-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font: 600 .74rem/1 var(--display);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--pad-ink-2);
+}
+.form input, .form select, .form textarea {
+  font: 400 1rem/1.4 var(--body);
+  color: var(--pad-ink);
+  background: var(--pad);
+  border: 1px solid var(--pad-rule);
+  border-radius: 7px;
+  padding: 12px 14px;
+  text-transform: none;
+  letter-spacing: 0;
+  width: 100%;
+}
+.form input:focus, .form select:focus, .form textarea:focus {
+  outline: none;
+  border-color: var(--cta);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--cta) 30%, transparent);
+}
+.form textarea { resize: vertical; min-height: 104px; }
+.form .btn { justify-content: center; }
+.form .fine { font-size: .82rem; color: var(--pad-ink-2); }
+
+/* Grupo de rádios sem borda de fieldset, para herdar o layout em coluna. */
+.form .fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.form .field-legend { padding: 0; margin-bottom: 9px; }
+
+/* Rádios escondidos; a pílula ao lado é o controle visível. */
+.seg { display: flex; flex-wrap: wrap; gap: 8px; }
+.seg input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.seg span {
+  display: inline-block;
+  padding: 9px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--pad-rule);
+  font: 600 .82rem/1 var(--body);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--pad-ink);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.seg input:checked + span { background: var(--cta); border-color: var(--cta); color: var(--cta-ink); }
+.seg input:focus-visible + span { outline: 3px solid var(--hl); outline-offset: 2px; }
+
+.count {
+  align-self: flex-end;
+  font: 500 .72rem/1 var(--body);
+  font-variant-numeric: tabular-nums;
+  color: var(--pad-ink-2);
+}
+
+.direct { margin-top: 30px; display: flex; flex-direction: column; gap: 12px; }
+.phone {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border-radius: 9px;
+  background: var(--pad-2);
+  border: 1px solid var(--pad-rule);
+  color: var(--pad-ink);
+}
+.phone .n { font: 600 1.25rem/1 var(--body); font-variant-numeric: tabular-nums; user-select: all; }
+.phone button {
+  margin-left: auto;
+  border: 0;
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: var(--cta);
+  color: var(--cta-ink);
+  font: 600 .8rem/1 var(--body);
+  cursor: pointer;
+}
+
+.socials { display: flex; flex-wrap: wrap; gap: 10px; }
+.socials a {
+  flex: 1 1 130px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--pad-rule);
+  color: var(--pad-ink);
+  text-decoration: none;
+  transition: border-color .2s, transform .2s var(--ease);
+}
+.socials a:hover { border-color: var(--cta); transform: translateY(-2px); }
+.socials span {
+  display: block;
+  font: 600 .66rem/1 var(--display);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pad-ink-2);
+  margin-bottom: 6px;
+}
+/* O seletor genérico de links sobre faixa escura não vale aqui. */
+.dark .socials a { color: var(--pad-ink); }
+
+@media (max-width: 900px) { .contact .wrap { grid-template-columns: 1fr; gap: 40px; } }

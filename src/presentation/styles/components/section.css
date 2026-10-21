@@ -1,0 +1,18 @@
+/* Bloco de seção e seu cabeçalho (rótulo, título e ação opcional). */
+.block { padding-block: 96px; }
+.block + .block { border-top: 1px solid var(--rule); }
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px 40px;
+  margin-bottom: 48px;
+}
+.head > div { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+
+@media (max-width: 700px) {
+  .block { padding-block: 64px; }
+  .head { margin-bottom: 32px; }
+}
